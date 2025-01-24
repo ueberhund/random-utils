@@ -23,7 +23,7 @@ echo $json_data | jq -c '.ResourceIdentifiers[]' | while read i; do
     #item_config contains a string that looks like this: "publicIpAddress":"3.19.73.112"
     #Find the IP address in the string
      
-    ip_address=$( echo $item_config | grep -o '\\"publicIpAddress\\":\\"[0-9,\.]*\\"' | grep -o '[0-9,.]*' )
+    ip_address=$( echo $item_config | grep -o '\\"publicIpAddress\\":\\"[0-9,.]*\\"' | grep -o '[0-9,.]*' )
     if [[ "$IP_ADDRESS_TO_FIND" == "$ip_address" ]]; then
         echo "Found IP address $IP_ADDRESS_TO_FIND in resource $resource_id"
         echo "Source account ID: $source_account_id"
